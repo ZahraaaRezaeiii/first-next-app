@@ -6,18 +6,22 @@ interface Props {
   };
 }
 
-const ProductPage = async ({ params }: Props) => {
+const ProductPage = ({ params }: Props) => {
   const { products } = params;
 
-  if (products === "1") {
-    return notFound();
+  if (products === "2") {
+    return notFound()
   }
 
-  return (
-    <div>
-      <h1>Product: {products}</h1>
-    </div>
-  );
+  return <h1>Product: {products}</h1>;
 };
 
 export default ProductPage;
+
+export async function generateStaticParams() {
+  return [
+    { products: '1' },
+    { products: '2' },
+    { products: '3' },
+  ];
+}
